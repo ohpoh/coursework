@@ -1,0 +1,130 @@
+
+.courses_id{
+    display: none;
+}
+/* .courses li {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    list-style: none;
+    background-color: rgb(47, 47, 47);
+    font-family: montserrat;
+    border: 1px solid white;
+}
+
+.courses li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 10px;
+}
+
+.courses li:hover {
+    background-color: #0979ad;
+    color: white;
+} */
+.spis{
+    display: none;
+}
+.backgraund{
+    color: white;
+    background-color: #000000;
+    display: flex;
+}
+.poisk{
+    /* text-align: center; */
+
+    width: 30%;
+    border-radius:30px;
+    padding-top: 16px;
+}
+.vibor li.hide{
+    display: none;
+}
+.vibor{
+    display: none;
+    list-style: none;
+}
+.spisok{
+    border-radius: inherit;
+    width: 100%;
+}
+.header{
+    display: flex;
+}
+.wrapper {
+    display: block;
+    width: 100%;
+    max-width: 1440px;
+    padding: 0 30px;
+    margin: 0 auto;
+}
+.containerr{
+    justify-content: center;
+    text-align: center;
+    display: flex;
+}
+.header .header__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.header-backgraund{
+    color: white;
+    background-color: #000000;
+    padding-bottom: 3%;
+    padding: 30px;
+   }
+   body {
+    display: block;
+    margin: 0px;
+}
+
+.containerspisok{
+position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    width: 100%;
+}
+.spheader{
+    display: none;
+}
+.poster{
+    width: 160.2px; padding-right: 24px;
+}
+.posters{
+    display: flex;
+}
+.poster_img{
+    width: 161px;
+}
+.a_poster{
+    text-decoration: none;
+    color: black;
+}
+.styles_row__da_RK{
+    display: flex;
+    align-items: baseline;
+    padding: 8px 0;
+}
+.styles_titleDark___tfMR {
+    color: rgba(0,0,0,.6);
+}
+.styles_title__b1HVo {
+    width: 160px;
+    font-family: Graphik Kinopoisk LC Web,Tahoma,Arial,Verdana,sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+}
+.style_a{
+    text-decoration: none; color: white;
+}
+.style_a:hover{
+    text-decoration: none;
+}
+.error{
+    color: red;
+font-size: 10px;
+}

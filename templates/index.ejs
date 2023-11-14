@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="import" href="shapka.html">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
+
+</head>
+<body>
+    <div class="header-backgraund" id="header-backgraund">
+        <header class="header wrapper container">
+            <div class="header__nav">
+                
+                <div class="home">
+                    <div class="homes"><a href="#" class="home">Название сайта</a></div>
+                <span class="spheader">
+                    <ul>
+                        <li><a href="#">Главная</a></li>
+                        <li><a href="#">Фильмы</a></li>
+                        <li><a href="#">Сериалы</a></li>
+                    </ul>
+                </span>
+                </div>
+                <a>Онлайн кинотеатр</a>
+                
+                <div class="poisk">
+                    <input type="text" placeholder="Поиск" style="text-align: center;" class="spisok">
+    <div class="containerspisok">
+                    <article>
+                        <a>Тест</a>
+                        <a>Пример</a>
+                    </article>
+                </div>
+                <div style="position: absolute;
+                color: green;
+                border: solid;
+                background: white;
+                width: 28%;
+                border-radius: 32px;">
+                    <ul class="vibor">
+                        <li>
+                            <article style="position: relative;
+                            display: flex;
+                            flex-wrap: nowrap;
+                            justify-content: space-between;
+                            align-items: flex-start;
+                            min-height: 36px;
+                            padding: 10px 16px;
+                            cursor: pointer;
+                            text-decoration: none;">
+                        <div style="    display: flex;
+                        overflow: hidden;
+                        align-items: stretch;">
+                    <div style="display: flex;
+                    overflow: hidden;
+                    flex-direction: column;
+                    flex-shrink: 0;
+                    justify-content: center;
+                    width: 32px;
+                    height: 48px;
+                    margin-right: 14px;">
+                
+                <img style="    width: 32px;
+                            height: 48px; display: block; object-fit: cover;" src="img/Sukuna Icon 48.jpg">
+                </div>  
+                <div style="display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 4px 0;">
+            <h4 style="margin: 0;
+            font-family: Graphik Kinopoisk LC Web,Tahoma,Arial,Verdana,sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 20px;
+            color: #000;"><a style="    text-decoration: none;
+    color: inherit;
+    outline: none;
+    -webkit-transition: background-color .1s ease-out;
+    transition: background-color .1s ease-out;">Тест</a></h4>  
+    <div style="    margin-top: 2px;
+    line-height: 18px;">
+    <div style="    display: inline-block;
+    margin-right: 4px;">
+    <div style="    color: #3bb33b;">
+        <span>Оценка</span>
+
+    </div>
+    </div>
+    <span>
+        Сериал ,
+        <span style="    white-space: nowrap;"> 2023</span>
+    </span>
+    </div>  
+            </div>  
+                    </div>    
+                        </article>
+                        <!-- <div style="display: flex;"><h3>Название Тест</li> -->
+                        </li>
+                        <li>Пример</li>
+                        <li>Пример</li>
+                        <li>Пример</li>
+                        <li>Пример</li>
+                        <li>Пример</li>
+                        <li>Пример</li>
+                        <li>Пример</li>
+                        <li>Пример</li>
+                    </ul></div>
+                    </div>
+                    <a href="/auth">Войти</a>
+        <!-- <div class="backgraund"> -->
+    
+        </header>
+    </div>
+    </div>
+            <div>
+               
+            </div>
+        </div>
+    <div id="yourDiv"></div>
+    <!-- <script>
+     $("#yourDiv").load('shapka.html #header-backgraund');
+      </script> -->
+    <div>Фильмы смотреть онлайн</div>
+    <div class="main">
+        <div class="dropdown_list">
+            <button class="dropdown_button">
+                <img>
+            </button>
+    <!-- <div id="courses_id">
+        <ul class="spis">
+        <li><a href="">1</a></li>
+        <li><a href="">2</a></li>
+        <li><a href="">3</a></li>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+    </ul>
+    </div> -->
+        </div>
+    </div>
+</div>
+<div class="posters">
+  <div style="display: flex;">
+<div class="poster">
+    <a href="info_00" class="a_poster">
+    <img class="poster_img" src="img/Sukuna Icon HD.jpg">
+    <p><%= params[0].name %></p>
+</a>
+  </div>
+  <div class="poster">
+  <img class="poster_img" src="img/0gi75oQEDGo.jpg">
+  <h3>Название</h3>
+</div>
+</div>
+</div>
+
+    
+</body>
+</html>
+
+<script src="JS/spisok"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('.dropdown_list').click(function(){
+		$('.spis').slideToggle(300);      
+		return false;
+	});
+    
+});
+
+// $(document).ready(function(){
+//             $('.spisok').click(function(){
+// 		$('.vibor').slideToggle(300);      
+// 		return false;
+// 	});
+// });
+
+$('.spisok').click(function(){
+$('.vibor').show();
+});
+$('.spisok').mouseout(function(){
+    $('.vibor').hide();
+});
+$('.home').mouseover(function(){
+    $('.spheader').show();
+});
+$('.home').mouseout(function(){
+    $('.spheader').hide();
+});
+
+
+
+      
+    </script>

@@ -1,0 +1,36 @@
+document.querySelector('.spisok').oninput = function (){
+        let val = this.value.trim();
+        let spisokItems= document.querySelectorAll('.vibor li');
+        if(val != ''){
+                spisokItems.forEach((elem)=>{
+                        if(elem.innerText.search(val) ==-1){
+                                elem.classList.add('hide');
+                        }
+                        else{
+                                elem.classList.remove('hide');
+                        }
+                })
+        }
+        else{
+                spisokItems.forEach(function(elem){
+                        elem.classList.remove('hide');
+        });
+}
+}
+// trim обрезка пробелов
+// oninput При любом изменении
+//         function show_list() {
+//             var courses = document.getElementById("courses_id");
+ 
+//             if (courses.style.display == "block") {
+//                 courses.style.display = "none";
+//             } else {
+//                 courses.style.display = "block";
+//             }
+//         }
+//         window.onclick = function (event) {
+//             if (!event.target.matches('.dropdown_button')) {
+//                 document.getElementById('courses_id')
+//                     .style.display = "none";
+//             }
+//         }   
