@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="import" href="shapka.html">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link href="https://vjs.zencdn.net/8.6.1/video-js.css" rel="stylesheet" />
     
 
 </head>
@@ -42,6 +43,7 @@
                 width: 28%;
                 border-radius: 32px;">
                     <ul class="vibor">
+                        <%for(let i=0;i<result.length;i++) {%>
                         <li>
                             <article style="position: relative;
                             display: flex;
@@ -65,7 +67,7 @@
                     margin-right: 14px;">
                 
                 <img style="    width: 32px;
-                            height: 48px; display: block; object-fit: cover;" src="img/Sukuna Icon 48.jpg">
+                            height: 48px; display: block; object-fit: cover;" src="img/<%=result[i].filedata%>">
                 </div>  
                 <div style="display: flex;
                 flex-direction: column;
@@ -80,7 +82,7 @@
     color: inherit;
     outline: none;
     -webkit-transition: background-color .1s ease-out;
-    transition: background-color .1s ease-out;">Тест</a></h4>  
+    transition: background-color .1s ease-out;"><%=result[i].nametitle%></a></h4>  
     <div style="    margin-top: 2px;
     line-height: 18px;">
     <div style="    display: inline-block;
@@ -90,11 +92,14 @@
 
     </div>
     </div>
+    
     <span>
         Сериал ,
         <span style="    white-space: nowrap;"> 2023</span>
     </span>
+
     </div>  
+    <%}%>
             </div>  
                     </div>    
                         </article>
@@ -110,7 +115,8 @@
                         <li>Пример</li>
                     </ul></div>
                     </div>
-                    <a href="/auth">Войти</a>
+                    <!-- <a href="/auth">Войти</a> -->
+                    <%-teg %>
         <!-- <div class="backgraund"> -->
     
         </header>
@@ -125,6 +131,27 @@
      $("#yourDiv").load('shapka.html #header-backgraund');
       </script> -->
     <div>Фильмы смотреть онлайн</div>
+
+    <video
+    id="my-video"
+    class="video-js"
+    controls
+    preload="auto"
+    width="640"
+    height="264"
+    poster="img/Sukuna Icon HD.jpg"
+    data-setup="{}"
+  >
+    <source src="video/alert.mp4" type="video/mp4" />
+    <source src="video/alert.webm" type="video/webm" />
+    <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a
+      web browser that
+      <a href="https://videojs.com/html5-video-support/" target="_blank"
+        >supports HTML5 video</a
+      >
+    </p>
+  </video>
     <div class="main">
         <div class="dropdown_list">
             <button class="dropdown_button">
@@ -144,12 +171,17 @@
 </div>
 <div class="posters">
   <div style="display: flex;">
-<div class="poster">
-    <a href="info_00" class="a_poster">
-    <img class="poster_img" src="img/Sukuna Icon HD.jpg">
-    <p><%= params[0].name %></p>
-</a>
-  </div>
+    <%for(let i=0;i<result.length;i++) {%>
+        <div class="poster">
+            <form action="/info_00" method="get">
+                <input type="hidden"  class="form-control" name="namestr" id="namestr"required value="<%=result[i].namestr%>.ejs">
+                <input type="hidden"  class="form-control" name="idstr" id="idstr"required value="<%=result[i].idstr%>">
+            <button  class="a_poster"></form>
+            <img class="poster_img" src="img/<%=result[i].filedata%>">
+            <p><%=result[i].nametitle%></p>
+        </a>
+          </div>
+          <%} %>
   <div class="poster">
   <img class="poster_img" src="img/0gi75oQEDGo.jpg">
   <h3>Название</h3>
@@ -160,7 +192,7 @@
     
 </body>
 </html>
-
+<script src="https://vjs.zencdn.net/8.6.1/video.min.js"></script>
 <script src="JS/spisok"></script>
 
     <script>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="CSS/style.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        
+    
+    </head>
+    <body>
+        <form method="post" action="/addstr" enctype="multipart/form-data">
+            <input type="number" class="form-control" name="idstr" id="idstr" required placeholder="Ид страницы">
+            <input type="text" class="form-control" name="namestr" id="namestr" required placeholder="Название страницы">
+            <input type="text" class="form-control" name="nametitle" id="nametitle" required placeholder="Название тайтла">
+            <label>Картинка под тайтл</label>
+            <input type="file" name="filedata" id="filedata" required><br>
+            <label>О тайтле</label>
+            <input type="text" class="form-control" name="agetitle" id="agetitle" required placeholder="Год производства тайтла">
+            <input type="text" class="form-control" name="countrytitle" id="countrytitle" required placeholder="Страна">
+            <input type="text" class="form-control" name="genretitle" id="genretitle" required placeholder="Жанр">
+            <input type="number" class="form-control" name="agefortitle" id="agefortitle" required placeholder="Возраст">
+            <input type="text" class="form-control" name="raitingtitle" id="raitingtitle" required placeholder="Рейтинг">
+            <input type="text" class="form-control" name="timetitle" id="timetitle" required placeholder="Время">
+            <input type="text" class="form-control" name="abouttitile" id="abouttitile" required placeholder="Информация о тайтле">
+        <input type="submit" class="form-control" name="submit_re" id="submit_re" value="Создать страницу">
+    </form>
+    </body>
+    </html>

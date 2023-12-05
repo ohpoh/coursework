@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Вход</title>
+        <link rel="stylesheet" href="CSS/style.css">
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    
+    </head>
+<body style="background-image: url(img/wIqPcWTvFRos.jpg); background-repeat: no-repeat;"> 
+    <div style="width: 100%; display: flex; justify-content: center; margin-top: 10%;">
+        <div style="padding: 32px; background-color: #131317; border-radius: 32px;">
+            <div style="display: flex; justify-content: center;">
+<!-- <svg style="    fill: white; width:10px;" class="arrow-left-1" viewbox="0 0 60 100"><path d="M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z"/></svg> -->
+                <h3 style="color: white;">Вход</h3>
+            </div>
+    <form action="/registr" method="post" style="text-align: center;     width: 211px;" class="forms" novalidate>
+        <label for="login">
+        <input type="text" class="form-control" name="login" id="login" placeholder="Введите логин" required minlength="10" maxlength="30">
+        <span class="error" aria-live="polite"><%=errore %></span>
+    </label> <br>
+    <label for="name">
+      <input type="text" class="form-control" name="name" id="name" placeholder="Введите ваше имя" required minlength="3" maxlength="30"onKeyUp="if(/[^a-zA-Zа-яА-ЯёЁ]/i.test(this.value)){this.value='';}">
+      <span class="error" aria-live="polite"></span>
+  </label> <br>
+        <label for="mail">
+        <input type="email" class="form-control" name="mail" id="mail" placeholder="Введите Маил" required minlength="16">
+        <span class="error" aria-live="polite"><%=errors %></span>
+    </label> <br>
+    <label for="password">
+        <input type="password" class="form-control" name="password" id="password" placeholder="Придумайте Пароль" required minlength="10" maxlength="25">
+        <span class="error" aria-live="polite"></span>
+      </label><br>
+      <label for="password_2">
+        <input type="password" class="form-control" name="password_2" id="password_2" placeholder="Подтвердите Пароль" required>
+        <span class="error" aria-live="polite"></span>
+      </label>
+        <br>
+        <input type="submit" class="form-control" name="sub" value="Зарегистрироваться"> 
+        <div style="border-radius: 32px;
+        border: solid; margin-top: 8px;">
+        <a href="/auth" class="style_a">
+        <span style="color: white;">Авторизоваться</span></a>
+    </div>
+    <a class="style_a"  href="/index">Вернуться на главную</a>
+    
+    </form>
+    </div>
+    
+</div>
+</body>
+</html>
+
+<script>
+const name=document.getElementById('name');
+const nameError = document.querySelector("#name + span.error");
+const password=document.getElementById('password');
+const passwordError = document.querySelector("#password + span.error");
+const password_2=document.getElementById('password_2');
+const password_2Error = document.querySelector("#password_2 + span.error");          
+const forme = document.getElementsByTagName("form")[0];
+let myString=document.querySelector('#login').value;
+const login=document.getElementById("login");
+const loginError = document.querySelector("#login + span.error");
+const email = document.getElementById("mail");
+const emailError = document.querySelector("#mail + span.error");
+console.log(emailError)
+
+
+email.addEventListener("input", function (event) {
+  // Каждый раз, когда пользователь что-то вводит,
+  // мы проверяем, являются ли поля формы валидными
+
+  if (email.validity.valid) {
+    // Если на момент валидации какое-то сообщение об ошибке уже отображается,
+    // если поле валидно, удаляем сообщение
+    emailError.textContent = ""; // Сбросить содержимое сообщения
+    emailError.className = "error"; // Сбросить визуальное состояние сообщения
+  } else {
+    // Если поле не валидно, показываем правильную ошибку
+    showError();
+  }
+});
+
+forme.addEventListener("submit", function (event) {
+  // Если поле email валдно, позволяем форме отправляться
+
+  if (!email.validity.valid) {
+    // Если поле email не валидно, отображаем соответствующее сообщение об ошибке
+    showError();
+    // Затем предотвращаем стандартное событие отправки формы
+    event.preventDefault();
+  }
+});
+
+function showError() {
+  if (email.validity.valueMissing) {
+    // Если поле пустое,
+    // отображаем следующее сообщение об ошибке
+    emailError.textContent = "Введите Маил";
+  } else if (email.validity.typeMismatch) {
+    // Если поле содержит не email-адрес,
+    // отображаем следующее сообщение об ошибке
+    emailError.textContent = "Введенное значение должно быть адресом электронной почты.";
+  } else if (email.validity.tooShort) {
+    // Если содержимое слишком короткое,
+    // отображаем следующее сообщение об ошибке
+    emailError.textContent = `Электронная почта должна быть не менее ${email.minLength} символов, нужно добавить ${email.value.length}.`;
+  }
+  emailError.className = "error active";
+}
+
+
+
+login.addEventListener("input", function (event) {
+  // Каждый раз, когда пользователь что-то вводит,
+  // мы проверяем, являются ли поля формы валидными
+
+  if (login.validity.valid) {
+
+    // Если на момент валидации какое-то сообщение об ошибке уже отображается,
+    // если поле валидно, удаляем сообщение
+    loginError.textContent = ""; // Сбросить содержимое сообщения
+    loginError.className = "error"; // Сбросить визуальное состояние сообщения
+  } else {
+    // Если поле не валидно, показываем правильную ошибку
+    showErrorlogin();
+  }
+});
+
+forme.addEventListener("submit", function (event) {
+  // Если поле login валдно, позволяем форме отправляться
+
+  if (!login.validity.valid) {
+    // Если поле login не валидно, отображаем соответствующее сообщение об ошибке
+    showErrorlogin();
+   
+    // string.replace()
+    // Затем предотвращаем стандартное событие отправки формы
+    event.preventDefault();
+  }
+});
+
+$('#login').mouseout(function(){
+// console.log(document.getElementById('login').value.split(' ').join(''));
+let zamena=document.getElementById('login').value.split(' ').join('');
+$('#login').val(zamena);
+});
+
+$('#mail').mouseout(function(){
+// console.log(document.getElementById('mail').value.split(' ').join(''));
+let zamena=document.getElementById('mail').value.split(' ').join('');
+$('#mail').val(zamena);
+});
+
+$('#name').mouseout(function(){
+// console.log(document.getElementById('name').value.split(' ').join(''));
+let zamena=document.getElementById('name').value.split(' ').join('');
+$('#name').val(zamena);
+});
+$('#password').mouseout(function(){
+// console.log(document.getElementById('password').value.split(' ').join(''));
+let zamena=document.getElementById('password').value.split(' ').join('');
+$('#password').val(zamena);
+});
+$('#password_2').mouseout(function(){
+// console.log(document.getElementById('password_2').value.split(' ').join(''));
+let zamena=document.getElementById('password_2').value.split(' ').join('');
+$('#password_2').val(zamena);
+});
+// 
+// if(document.querySelector('#login').value.trim() === ""){
+//     console.log("Пусто")
+// }
+// else{console.log("Все")}
+// 
+
+function showErrorlogin() {
+  if (login.validity.valueMissing) {
+    
+    // Если поле пустое,
+    // отображаем следующее сообщение об ошибке
+    loginError.textContent = "Введите Логин";
+  } else if (login.validity.typeMismatch) {
+    // Если поле содержит не login-адрес,
+    // отображаем следующее сообщение об ошибке
+    loginError.textContent = "Введенное значение должно быть адресом электронной почты.";
+  } else if (login.validity.tooShort) {
+    // Если содержимое слишком короткое,
+    // отображаем следующее сообщение об ошибке
+    loginError.textContent = `Логин должен быть не менее ${login.minLength} символов, нужно добавить ${login.value.length}.`;
+  }
+  loginError.className = "error active";
+}
+
+name.addEventListener("input", function (event) {
+  // Каждый раз, когда пользователь что-то вводит,
+  // мы проверяем, являются ли поля формы валидными
+
+  if (name.validity.valid) {
+    // Если на момент валидации какое-то сообщение об ошибке уже отображается,
+    // если поле валидно, удаляем сообщение
+    nameError.textContent = ""; // Сбросить содержимое сообщения
+    nameError.className = "error"; // Сбросить визуальное состояние сообщения
+  } else {
+    // Если поле не валидно, показываем правильную ошибку
+    showErrorName();
+  }
+});
+
+forme.addEventListener("submit", function (event) {
+  // Если поле name валдно, позволяем форме отправляться
+
+  if (!name.validity.valid) {
+    // Если поле name не валидно, отображаем соответствующее сообщение об ошибке
+    showErrorName();
+    // Затем предотвращаем стандартное событие отправки формы
+    event.preventDefault();
+  }
+});
+
+function showErrorName() {
+  if (name.validity.valueMissing) {
+    // Если поле пустое,
+    // отображаем следующее сообщение об ошибке
+    nameError.textContent = "Введите Имя";
+  } else if (name.validity.typeMismatch) {
+    // Если поле содержит не name-адрес,
+    // отображаем следующее сообщение об ошибке
+    nameError.textContent = "Введенное значение должно быть именем.";
+  } else if (name.validity.tooShort) {
+    // Если содержимое слишком короткое,
+    // отображаем следующее сообщение об ошибке
+    nameError.textContent = `Имя должно быть не менее ${name.minLength} символов, нужно добавить ${name.value.length}.`;
+  }
+  nameError.className = "error active";
+}
+
+
+password.addEventListener("input", function (event) {
+  // Каждый раз, когда пользователь что-то вводит,
+  // мы проверяем, являются ли поля формы валидными
+
+  if (password.validity.valid) {
+    // Если на момент валидации какое-то сообщение об ошибке уже отображается,
+    // если поле валидно, удаляем сообщение
+    passwordError.textContent = ""; // Сбросить содержимое сообщения
+    passwordError.classPassword = "error"; // Сбросить визуальное состояние сообщения
+  } else {
+    // Если поле не валидно, показываем правильную ошибку
+    showErrorPassword();
+  }
+});
+
+forme.addEventListener("submit", function (event) {
+  // Если поле password валдно, позволяем форме отправляться
+
+  if (!password.validity.valid) {
+    // Если поле password не валидно, отображаем соответствующее сообщение об ошибке
+    showErrorPassword();
+    // Затем предотвращаем стандартное событие отправки формы
+    event.preventDefault();
+  }
+});
+
+function showErrorPassword() {
+  if (password.validity.valueMissing) {
+    // Если поле пустое,
+    // отображаем следующее сообщение об ошибке
+  passwordError.textContent = `Введите Пароль`;
+    
+  }
+    else if (password.validity.tooShort) {
+      
+    // Если содержимое слишком короткое,
+    // отображаем следующее сообщение об ошибке
+    passwordError.textContent = `Пароль должен быть не менее ${password.minLength} символов, нужно добавить, сейчас ${password.value.length} символа.`;
+  }
+  passwordError.classPassword = "error active";
+}
+password_2.addEventListener("input", function (event) {
+  // Каждый раз, когда пользователь что-то вводит,
+  // мы проверяем, являются ли поля формы валидными
+
+  if (password_2.validity.valid) {
+    // Если на момент валидации какое-то сообщение об ошибке уже отображается,
+    // если поле валидно, удаляем сообщение
+    password_2Error.textContent = ""; // Сбросить содержимое сообщения
+    password_2Error.classPassword_2 = "error"; // Сбросить визуальное состояние сообщения
+  } else {
+    // Если поле не валидно, показываем правильную ошибку
+    showErrorPassword_2();
+  }
+});
+
+forme.addEventListener("submit", function (event) {
+  // Если поле password_2 валдно, позволяем форме отправляться
+
+  if (!password_2.validity.valid) {
+    // Если поле password_2 не валидно, отображаем соответствующее сообщение об ошибке
+    showErrorPassword_2();
+    // Затем предотвращаем стандартное событие отправки формы
+    event.preventDefault();
+  }
+
+  if (password_2.value!=password.value){
+    // Если поле password_2 не валидно, отображаем соответствующее сообщение об ошибке
+    showErrorPassword_2();
+    // Затем предотвращаем стандартное событие отправки формы
+    event.preventDefault();
+    console.log("Пароли")
+  }
+});
+
+function showErrorPassword_2() {
+  if (password_2.validity.valueMissing) {
+    // Если поле пустое,
+    // отображаем следующее сообщение об ошибке
+    password_2Error.textContent = "Введите Пароль";
+  } 
+  else if (password_2.validity.tooShort) {
+    // Если содержимое слишком короткое,
+    // отображаем следующее сообщение об ошибке
+    password_2Error.textContent = `Пароль должен быть не менее ${password_2.minLength} символов, нужно добавить, сейчас ${password_2.value.length} символов.`;
+  }
+  else if(document.querySelector('#password_2').value!==document.querySelector('#password').value){
+    password_2Error.textContent=`Пароли не совпадают, попробуйте заново ввести пароли.`
+    console.log("Проверка")
+  }
+  password_2Error.classPassword_2 = "error active";
+}
+
+
+
+//   document.querySelector('input').addEventListener('input', function() {
+//   this.value = this.value.replace(/[^а-яА-Яa-zA-Z0-9.+-_]/s, '');
+  
+// });
+
+    $('#password').mouseout(function(){
+        let password = form.querySelector('#password').value.trim();
+        let error = document.createElement('div');
+        console.log(password);
+        if(password ===' ')
+        {
+            // if(form.querySelector('#error')){
+            //     console.log("ПРоверка");
+            //     parent.removeChild(error)
+            // }
+            // error.parentElement.removeChild(error)
+            
+            let passworde = form.querySelector('#password');
+            console.log(error)
+     error.className = 'error'
+    error.style.color = 'red'
+    error.innerHTML = '<p>Пароль не подходит</p>'
+    console.log(error);
+     passworde.parentElement.insertBefore(error, passworde)
+        }
+
+        else{
+            // error.parentElement.removeChild(error)
+        }
+});
+    let form=document.querySelector(".forms");
+    // let password = form.querySelector('#password');
+    let passwordConfirmation=form.querySelector('#password');
+    console.log("Тест");
+    console.log(password);
+
+// if (password.value !== passwordConfirmation.value) {
+//     console.log('not equals')
+//     var error = document.createElement('div')
+//     // error.className = 'error'
+//     // error.style.color = 'red'
+//     var error = generateError('Password doesnt match')
+//     password.parentElement.insertBefore(error, password)
+//     alert("Стой");
+//   }
+
+// if(document.querySelector("#loginn").value == ' ') {
+//     console.log("тут");
+//     alert("!!!");
+//}
+</script>

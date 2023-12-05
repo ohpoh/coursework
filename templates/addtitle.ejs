@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/addtitle" method="post" enctype="multipart/form-data" style="text-align: center;     width: 211px;" class="forms" novalidate>
+        <label for="login">
+        <input type="text" class="form-control" name="login" id="login" placeholder="Введите название тайтла" required minlength="10" maxlength="30">
+        <span class="error" aria-live="polite"></span>
+    </label> <br>
+    <label for="name">
+      <label for="">Выберите тип тайтла</label>
+      <select id="titles" name="tip_title">
+        <option value="Фильм">Фильм</option>
+        <option value="Сериал">Сериал</option>
+      </select>
+      <span class="error" aria-live="polite"></span>
+  </label> <br>
+        <label for="mail">
+            <input type="file" name="filedata">
+        <span class="error" aria-live="polite"></span>
+    </label> <br>
+        <input type="submit" class="form-control" name="sub" value="Добавить"> 
+    <a class="style_a"  href="/admin">Вернуться назад</a>
+    
+    </form>
+</body>
+</html>
